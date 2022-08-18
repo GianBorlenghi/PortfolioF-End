@@ -1,0 +1,44 @@
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
+<div class="fondo">
+    <div class="presentation">
+        <a href="/home">Home</a>
+        <p>Hello dear.. Here you will be register an admin.</p>
+    </div>
+    <div class="form-container">
+        <form action="" [formGroup]="registerForm" (ngSubmit)="submit()">
+
+            <label for="mail">Username</label>
+            <a href="javascript:void(0)" id="link" style="position:absolute;margin-left:310px;color:#35a;"
+                (click)="userAvailable()"><i id="icon" class="fa fa-solid fa-magnifying-glass"></i></a>
+            <input formControlName="mail" type="text" name="mail" id="mail" autocomplete="off"
+                (change)="getUser($event)">
+            <div class="alert" *ngIf="registerForm.get('mail')?.errors?.['required']">*Mail is required</div>
+            <div class="alert" *ngIf="registerForm.get('mail')?.errors?.['email']">*Email format invalid</div>
+
+
+            <label for="pass">Password</label>
+            <input formControlName="password" type="password" id="pass" name="pass">
+            <div class="alert" *ngIf="registerForm.get('password')?.errors?.['required']">*Password is required</div>
+            <div class="alert" *ngIf="registerForm.get('password')?.errors?.['minlength']">*Password needs at least six
+                characters</div>
+            <div class="alert" *ngIf="registerForm.get('password')?.errors?.['maxlength']">*Password is too large</div>
+
+
+
+            <label for="passRepeat">Repeat password</label>
+            <input formControlName="passwordRepeat" type="password" id="passRepeat" name="passRepeat">
+            <div class="alert"
+                *ngIf="registerForm.get('password')?.value !== registerForm.get('passwordRepeat')?.value ">*Passwords do
+                not match</div>
+
+            <input
+                [disabled]="registerForm.invalid  || registerForm.get('password')?.value !== registerForm.get('passwordRepeat')?.value"
+                type="submit" id="btn" value="Register">
+
+        </form>
+    </div>
+
+</div>

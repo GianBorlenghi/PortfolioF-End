@@ -1,0 +1,36 @@
+<div class="fondo">
+
+    <div class="container">
+
+        <div class="form-container">
+
+            <form action="" [formGroup]="editEducationForm" (ngSubmit)="submit()">
+
+                <input type="text" formControlName="name" placeholder="Education-Name">
+                <div class="alert" *ngIf="editEducationForm.get('name')?.errors?.['required']">*Name is a required field</div>
+                <div class="alert" *ngIf="editEducationForm.get('name')?.errors?.['minlength']">Name field needs at least six characters</div>
+
+                <input type="text" formControlName="area" placeholder="Education-Area">
+
+                <div class="alert" *ngIf="editEducationForm.get('area')?.errors?.['required']">*Area is a required field</div>
+                <div class="alert" *ngIf="editEducationForm.get('area')?.errors?.['minlength']">Area field needs at least six characters</div>
+                
+                <input type="text" id="date" formControlName="graduation" placeholder="Education-Date of Graduation" onfocus="(this.type='date')" onblur="(this.type='text')">
+                <div class="alert" *ngIf="editEducationForm.get('graduation')?.errors?.['required']">*Graduation is a required field</div>
+
+                <input type="text" formControlName="institution" placeholder="Education-Institution">
+                <div class="alert" *ngIf="editEducationForm.get('institution')?.errors?.['required']">*Institution is a required field</div>
+                <div class="alert" *ngIf="editEducationForm.get('institution')?.errors?.['minlength']">Institution field needs at least six characters</div>
+
+                <input type="number" formControlName="hours" placeholder="Hours(If a course)">
+
+                <input type="submit" value="Add" id="btn-add">
+
+                <input type="reset" value="Reset" id="btn-reset">
+
+            </form>
+        </div>
+
+    </div>
+
+</div>

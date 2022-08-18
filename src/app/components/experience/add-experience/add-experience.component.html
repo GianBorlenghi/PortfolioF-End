@@ -1,0 +1,66 @@
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+<div class="fondo">
+<a href="/home"><i style="color: #000; font-size: 30px;" class="fa fa-solid fa-house"></i></a>
+    <div class="container">
+        
+        <div class="form-container">
+            <form action="" enctype="multipart/form-data" [formGroup]="workForm" (ngSubmit)="submit()">
+                <h3>Add Work experience to </h3>
+
+                <input type="text" formControlName="position" placeholder="Position">
+                <div class="alert" *ngIf="workForm.get('position')?.errors?.['required']">*Position is a required field
+                </div>
+                <div class="alert" *ngIf="workForm.get('position')?.errors?.['minlength']">*Position field needs at
+                    least six characters</div>
+
+                    <input type="text" id="date" formControlName="fromDate" placeholder="From" onfocus="(this.type='date')"
+                    onblur="(this.type='text')"  (change) = "valiDateFrom($event)" id="dateFrom">
+                <div class="alert" *ngIf="workForm.get('fromDate')?.errors?.['required']">*From Date is a required field
+                </div>
+                
+
+                <input [disabled]="true" id="until" type="text" id="date" formControlName="untilDate" placeholder="Until"
+                    onfocus="(this.type='date')" onblur="(this.type='text')" (change) = "valiDateUntil($event)" >
+                <div class="alert" *ngIf="workForm.get('untilDate')?.errors?.['required']">*Until Date is a required
+                    field</div>
+                    <div class="alert" *ngIf="workForm.get('untilDate')?.errors?.['maxlength'] || workForm.get('untilDate')?.errors?.['minlength']">*Until Date needs ten characters</div>
+                    <div *ngIf = "dateValid == false" class="alert" >*Please insert a value higher than<br> the from date</div>
+
+               
+
+                <input type="text" formControlName="company" placeholder="Company">
+                <div class="alert" *ngIf="workForm.get('company')?.errors?.['required']">*Company is a required field
+                </div>
+                <div class="alert" *ngIf="workForm.get('company')?.errors?.['minlength']">*Company field needs at least
+                    six characters</div>
+
+
+                <textarea id="description" formControlName="description" placeholder="Work description"></textarea>
+                <div class="alert" *ngIf="workForm.get('description')?.errors?.['required']">*Description is a required
+                    field</div>
+                <div class="alert" *ngIf="workForm.get('description')?.errors?.['minlength']">*Description field needs
+                    at least thirty characters</div>
+
+                <input type="file" formControlName="img" name="" id="file" (change)="fileEvent($event)" >
+                
+                <image-cropper [imageChangedEvent]="imgChangeEvt" [maintainAspectRatio]="true"
+                    [aspectRatio]="4 / 3" [resizeToWidth]="256" format="png" (imageCropped)="imageCropped($event)"
+                    (imageLoaded)="imageLoaded($event)" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
+                </image-cropper>
+                
+                <div class="col-md-4 preview-container">
+                    <h4 class="text-preview">Image Preview</h4>
+                    <img [src]="croppedImage" class="img-preview"/>
+                  </div>
+                <input type="submit" value="Add" id="btn-add">
+
+                <input type="button" value="Reset" id="btn-reset" (click)="reset()">
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

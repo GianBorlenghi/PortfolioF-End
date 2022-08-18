@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="container-title">
+
+        <h2>Work Experience<a *ngIf="isAdmin()" class="plus" routerLink ="admin/addExperience"><i id="plus"class="fa fa-solid fa-circle-plus"></i></a></h2>
+    </div>
+
+    <h3 *ngIf="erro !== null" id="error" class="elegantshadow"> <img style="width:30px" src="./assets/img/pixlr-bg-result.png" alt=""> {{erro}}</h3>
+
+    <div *ngIf="works !== null" class="container-experience">
+        <h4 id="msg"></h4>
+        <div class="container-experience-info">
+        <div *ngFor="let work of works;let i= index " class="experience">
+            <div *ngIf = "work.img != null "  class="img-container">
+                <img src="data:image/png;base64,{{work.img.data}}" class="rounded-circle" width="250" height="250" alt="Work image {{i+1}}">
+            </div>
+            <a *ngIf="isAdmin()" href="/home"  (click)="deleteWork(work.idWork)"><i class="fa fa-solid fa-trash" id="delete"></i></a>
+            <a *ngIf="isAdmin()" href="/admin/experience/editExperience/{{work.idWork}}" ><i class="fa fa-solid fa-pen" id="edit"></i></a>
+
+            
+            <h5 style="color:#ff8000"><b>Work {{i+1}}</b></h5>
+            <h5>Position: <span>{{work.workName}}</span> </h5>
+            <h5>From: <span>{{work.date_from}}</span> </h5>
+            <h5>Until: <span>{{work.date_until}}</span> </h5>
+            <h5>Company: <span>{{work.company}}</span> </h5>
+            <h5 class="description">Description: <span>{{work.description}}</span> </h5>
+          
+        </div>
+    </div>
+
+    </div>
+
+</div>

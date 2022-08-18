@@ -1,0 +1,24 @@
+<div class="fondo">
+    
+        <div class="form-container">
+            <form action="" [formGroup]="form" (ngSubmit)="submit(form.get('mail')?.value)">
+
+                <label for="mail">Username</label>
+                <input formControlName="mail" type="text" name="mail" id="mail" autocomplete="off">
+                <div class="alert" *ngIf="form.get('mail')?.errors?.['required']">*Username is a required field</div>
+                <div class="alert" *ngIf="form.get('mail')?.errors?.['email']">*Invalid mail format</div>
+
+                <label for="pass">Password</label>
+                <input formControlName="password" type="password" id="pass" name="pass">
+                <div class="alert" *ngIf="form.get('password')?.errors?.['required']">*Password is a required field</div>
+                <div class="alert" *ngIf="form.get('password')?.errors?.['maxlength']">*Password is too large</div>
+                <div class="alert" *ngIf="form.get('password')?.errors?.['minlength']">*Password is too short</div>
+
+                <input [disabled]="form.invalid" type="submit" id="btn" value="Log in">
+                <a href="/home"><input type="button" id="btn" value="Go Home"></a>
+            </form>
+        </div>
+           
+        </div>
+      
+    

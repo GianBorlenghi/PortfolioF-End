@@ -1,0 +1,53 @@
+<div class="fondo">
+    <a href="/home"><i style="color: #000; font-size: 30px;" class="fa fa-solid fa-house"></i></a>
+        <div class="container">
+            
+            <div class="form-container">
+                <form action="" enctype="multipart/form-data" [formGroup]="formEditExperience" (ngSubmit)="submit()">
+                    <h3>Add Work experience</h3>
+    
+                    <input type="text" formControlName="position" placeholder="Position">
+                    <div class="alert" *ngIf="formEditExperience.get('position')?.errors?.['required']">*Position is a required field
+                    </div>
+                    <div class="alert" *ngIf="formEditExperience.get('position')?.errors?.['minlength']">*Position field needs at
+                        least six characters</div>
+    
+                        <input type="text" id="date" formControlName="fromDate" placeholder="From" onfocus="(this.type='date')"
+                        onblur="(this.type='text')"  id="dateFrom" (change) = "valiDateFrom($event)">
+                        <div class="alert" *ngIf="formEditExperience.get('fromDate')?.errors?.['required']">*From Date is a required field
+                        </div>
+                    
+    
+                    <input  id="until" type="text" id="date" formControlName="untilDate" placeholder="Until"
+                        onfocus="(this.type='date')" onblur="(this.type='text')" (change) = "valiDateUntil($event)" >
+                    <div class="alert" *ngIf="formEditExperience.get('fromDate')?.errors?.['required']">*Until Date is a required
+                        field</div>
+                        <div *ngIf = "dateValid == false" class="alert" >*Please insert a date please insert a value higher than<br> the from date</div>
+
+                   
+    
+                    <input type="text" formControlName="company" placeholder="Company">
+                    <div class="alert" *ngIf="formEditExperience.get('company')?.errors?.['required']">*Company is a required field
+                    </div>
+                    <div class="alert" *ngIf="formEditExperience.get('company')?.errors?.['minlength']">*Company field needs at least
+                        six characters</div>
+    
+    
+                    <textarea id="description" formControlName="description" placeholder="Work description"></textarea>
+                    <div class="alert" *ngIf="">*Description is a required
+                        field</div>
+                        <div class="alert" *ngIf="formEditExperience.get('description')?.errors?.['required']">*Description is a required
+                            field</div>
+                        <div class="alert" *ngIf="formEditExperience.get('description')?.errors?.['minlength']">*Description field needs
+                            at least thirty characters</div>
+                  
+                    <input type="submit" value="Save" id="btn-add">
+    
+    
+                </form>
+    
+            </div>
+    
+        </div>
+    
+    </div>

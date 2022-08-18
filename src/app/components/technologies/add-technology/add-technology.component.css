@@ -1,0 +1,140 @@
+*{
+    box-sizing: border-box;
+    font-family: sans-serif;
+    padding:0;
+}
+
+.fondo{
+    background-image: linear-gradient(180deg, rgb(66, 119, 171),#b47a64,rgb(103, 129, 155));
+    padding: 0;
+   margin: 0;
+    display:flex;
+    top:0;
+    text-align: center;
+    justify-content: center;
+    justify-items: center;
+    height:802px;
+}
+
+.form-container{
+    display:flex;
+    justify-content: center;
+    justify-items: center;
+    width: 100%;
+    border:1px solid black;
+    margin: 115px auto;
+    padding: 20px;
+}
+
+.form-container input, select{
+    display: block;
+    padding:8px;
+    margin-top:25px;
+    width: 400px;
+    border:none;
+    outline: none;
+    border-radius: 3px;
+    font-style: italic;
+    background-color: transparent;
+    border-bottom:1px solid #35a;
+}
+
+.form-container input:focus{
+    border-bottom: 2px solid #35a;
+    color:#943f02;
+    font-size: 20px;
+}
+
+.form-container input::placeholder{
+    color:#555;
+}
+
+.form-container select::-ms-expand{
+    display:none;
+}
+
+#btn-add,#btn-reset{
+    display:inline-block;
+    width: 150px;
+    margin:20px;
+    border:1px solid black;
+    padding:5px;
+    margin-top:50px;
+}
+
+#btn-add:hover{
+    color:#111;
+    border:1px solid #35a;
+    background-color: rgb(109, 125, 189);
+}
+#btn-reset:hover{
+    color:#111;
+    border:1px solid #35a;
+    background-color: #c24;
+}
+#btn-add:focus,#btn-reset:focus{
+    font-size:15px;
+}
+.form-container select   {
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+    font-weight: 400;
+    color: #444;
+    line-height: 1.3;
+    padding: .4em 1.4em .3em .8em;
+    width: 400px;
+    max-width: 100%; 
+    box-sizing: border-box;
+    border: 1px solid #35a;
+    box-shadow: 0 1px 0 1px rgba(0,0,0,.03);
+    border-radius: .3em;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color:transparent
+    
+   }
+   .form-container select::-ms-expand {
+    display: none;
+   }
+   .form-container select:hover {
+    border-color: #333;
+   }
+   .form-container select:focus {
+    border-color: #aaa;
+    box-shadow: 0 0 1px 1px rgba(59, 153, 252, .7);
+    box-shadow: 0 0 0 3px -moz-mac-focusring;
+    color: #222; 
+    outline: none;
+    font-size:15px;
+   }
+
+
+   .form-container select option {
+    font-weight:normal;
+    background-color: rgb(154, 154, 163);
+
+   }
+   .alert{
+    color:#b31;
+}
+
+   @media screen and (max-width: 915px) {
+   
+    .fondo{
+        height: 1000px;
+    }
+
+    .form-container input, .form-container select{
+        font-size:10px;
+        width: 200px;
+    }
+
+    .form-container input:focus, .form-container select:focus{
+        font-size: 12px;
+    }
+
+    #btn-add,#btn-reset{
+        width: 50px;
+    }
+}

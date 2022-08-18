@@ -1,0 +1,43 @@
+
+
+
+<div class="container">
+
+    <div class="container-title">
+        
+            <h2>Education <a class="plus" routerLink ="admin/addEducation" *ngIf="getRol()"><i class="fa fa-solid fa-circle-plus"></i></a></h2>
+    </div>
+    <h3 id="error" class="elegantshadow" *ngIf="error !== null"><img style="width:30px" src="./assets/img/pixlr-bg-result.png" alt=""> {{error}}</h3>
+
+    <div *ngFor="let item of education" class="container-education">
+        <a *ngIf="getRol()" href="#openModal" (click) ="getIdEduc(item.idEducation)">
+            <i class="fa fa-solid fa-trash" id="delete"></i>
+        </a>
+        <a *ngIf="getRol()" href="/admin/education/editEducation/{{item.idEducation}}" ><i class="fa fa-solid fa-pen" id="edit"></i></a>
+
+
+        <h2><!--Titulo -->{{item.name}}
+        </h2>
+       
+        <h4>Area</h4><p>{{item.area}}</p>
+
+        <h4>Date Of Graduation</h4><p>{{item.dateOfGraduation}}</p>
+
+        <h4>Institution</h4><p>{{item.institution}}</p>
+<div  *ngIf="item.hours > 0">
+        <h4>Hours</h4><p>{{item.hours}}</p>
+    </div>
+    </div>
+   
+</div>
+
+<div id="openModal" class="modalDialog">
+	<div>
+		<a href="#close" title="Close" class="close">X</a>
+		<h2>Confirm</h2>
+		<p>¿Are you sure to delete this technology?</p>
+        <a href=''><button type="button" class="btn btn-primary" id="btn-confirm" (click)="deleteEduc()">Yes</button></a>
+        <a href=""><button type="button" class="btn btn-danger" id="btn-cancel">Cancel</button></a>
+	</div>
+</div>
+

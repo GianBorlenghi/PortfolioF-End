@@ -1,0 +1,22 @@
+<div class="body">
+
+<div class="container">
+
+    <section>
+        <img src="data:image/png;base64,{{person.img.data}}" class="rounded-circle photo" width="250" height="250">
+            <div class="presentation">
+        <h2 class="title">About me</h2>
+        <h2 class="sub-title name">{{person.name}} {{person.surname}}<a *ngIf="isAdmin()" [routerLink]="['admin/person/editPerson']"> <i class="fa fa-solid fa-pen"></i></a></h2>
+        <div *ngIf="!idisNull()" class="info-container">
+        <h5>Date of Birth : <span>{{person.dateOfBirth}}</span></h5>
+        <h5>Country : <span>{{person.country}}</span></h5>
+        <h5>City : <span>{{person.city}}</span></h5>
+        <h5 class="description">Description: <span>{{person.description}}</span></h5>
+        </div> 
+    </div>
+</section>
+</div>
+</div>
+   
+
+

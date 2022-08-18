@@ -1,0 +1,138 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+     
+}
+img {
+	width: 85%;
+     height: 70%;
+     object-fit: contain;
+ 
+}
+
+
+.contenedor {
+	background-color: #fff;
+	width: 70%;
+     height: 30%;
+	max-width: 1200px;
+	margin: 0px auto;
+	padding: 40px;
+	border-radius: 10px; 
+     border-bottom: 1px solid #ddd;  
+     font-family: sans-serif; 
+     border:1px solid #ff8000;
+ 
+    
+}
+
+main {
+     display: flex;
+     justify-content: flex-start;
+     align-items: center;
+}
+
+main .contenedor-img {
+     max-width: 60%;
+     margin-right: 20px;
+}
+
+.contenedor-texto .titulo {
+     font-size: 24px;
+     font-weight: normal;
+     margin-right: 0px;
+     margin-bottom: 100px;
+     color:#222;
+}
+
+.btn{
+     display: inline-block;
+     padding: 10px 20px;
+     margin-right: 10px;
+     text-decoration: none;
+     border-radius: 10px;
+    border-bottom: 3px solid #888;
+    background-color:#aaa;
+     color:#000;     
+}
+
+.btn:hover,
+.btn-link.activo {
+	color: #fff;
+	background: #ff8000;
+     border-radius: 10px;
+}
+
+#btn-select{
+     margin-top:0px;
+}
+.login {
+     width: 70%;
+     max-width: 1200px;
+     margin: 10px auto;
+     padding: 20px;
+     background: transparent;
+     margin: 0 auto;
+     height: 88px;
+     padding: 5px;
+     margin-bottom: 0;
+ }
+ 
+ .btn-sign_in {
+     padding: 5px;
+     float: right;
+     margin-top: 45px;
+     background-color: #999;
+     border: none;
+     width: 100px;
+ }
+ 
+ .img {
+     display: flex;
+     width: 25%;
+     height: 90%;
+     margin-left:0;
+     margin-bottom:0;
+     border-radius: 3px;
+
+ }
+
+ .img img{
+     display: inline;
+     width: 1200px;
+     height: 100%;
+     margin-left :0;
+}
+@media screen and (max-width: 915px) {
+     main {
+          flex-direction: column;
+          text-align: center;
+     }
+     .contenedor-texto .titulo{
+          font-size: 25px;
+     }
+     main .contenedor-img {
+          margin-bottom: 40px;
+     }
+
+     .btn{
+          font-size: 15px;
+          padding: 5px 15px;
+          margin-top:5px;
+     }
+
+     .btn-sign_in {
+          font-size:10px;
+          width: 65px;
+          margin-top:55px;
+     }
+     .img {
+          width: 100%;
+          border:none;
+             
+      }
+      .img img{
+         height: 100%;
+      }
+}

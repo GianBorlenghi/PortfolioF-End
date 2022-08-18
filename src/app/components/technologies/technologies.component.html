@@ -1,0 +1,20 @@
+<div class="container">
+  
+    <div class="title-container">
+        <h2>Technlogies<a class="plus" routerLink ="admin/addTechnology" *ngIf="getRol()"><i class="fa fa-solid fa-circle-plus"></i></a></h2>
+    </div>
+<div  *ngIf="error !== null">
+
+        <h3 id="error" class="elegantshadow"> <img style="width:30px" src="./assets/img/pixlr-bg-result.png" alt=""> {{error}}</h3>
+</div>
+    <div *ngFor ="let item of technology" class="tech-container">
+        <a *ngIf="getRol()" href="" (click)="deleteTech(item.idTechnology)">
+            <i class="fa fa-solid fa-trash" id="delete"></i>
+        </a>
+        <h4><!-- Tech name-->{{item.nameTechnology}}</h4>
+        <h5 ><!-- Tech level-->{{item.level}}</h5>
+    </div>
+    
+
+</div>
+

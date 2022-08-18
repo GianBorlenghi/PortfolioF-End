@@ -1,0 +1,44 @@
+*{
+    padding:0;
+    margin:0 auto;
+    font-family: sans-serif;
+}
+.container{
+    display: block;
+    justify-content: flex-start;
+    justify-items: flex-start;
+    width: 50%;
+    border-bottom:1px solid black; 
+    height: 165px;
+}
+
+.contact-info{
+    padding: 5px;
+    text-align: center; 
+
+}
+.contact-info i{
+    margin:10px;
+    color:#444;
+}
+
+.contact-info i:hover{
+    color:#d5a641;
+}
+.p-container{
+    text-align: center;
+    color:#333;
+    font-size: 15px;
+    font-weight: lighter;
+}
+
+@media screen and (max-width: 915px) {
+    .contact-info i{
+        font-size: 12px;
+    }
+
+    .p-container{
+        font-size: 10px;
+    }
+
+}

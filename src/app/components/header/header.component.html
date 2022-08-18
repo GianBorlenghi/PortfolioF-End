@@ -1,0 +1,31 @@
+<div class="login">
+     <div class="img">
+          <img src="https://i0.wp.com/diario-nco.com/wp-content/uploads/2021/09/Argentina-Programa-FUENTE-www.argentina.gob_.png?fit=1030%2C220&ssl=1" alt="Arg-Programa">
+     </div>
+     <a *ngIf="!logued()" [routerLink]="['/login']" class="btn btn-sign_in">Sign in</a></div>
+
+<div class="body">
+     <div class="contenedor">
+  <main>
+       <div class="contenedor-img">
+            <img src="./assets/img/pcphoto.jpg" alt="">
+       </div>
+       <div class="contenedor-texto">
+  <!-- Forma #1 -->
+
+  <h2 class="titulo"><span class="typed"></span></h2>
+        <a *ngIf="!logued()" [routerLink]="['/register']" class="btn btn-register">Register</a>
+        <a *ngIf="logued() && isAdmin()" [routerLink]="['admin/register']" class="btn btn-register">ADMIN Register</a>
+        <a *ngIf="logued() && isAdmin()" [routerLink]="['admin/person/addPerson']" class="btn btn-register">Person Register</a>
+        <a  [routerLink]="['person/selectPerson']" class="btn btn-register" id="btn-select">Select Person</a>
+
+
+       </div>
+      
+
+  </main>
+  
+</div>
+
+
+

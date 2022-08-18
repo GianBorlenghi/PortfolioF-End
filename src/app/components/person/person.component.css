@@ -1,0 +1,255 @@
+* {
+    box-sizing: border-box;
+    font-family: sans-serif;
+    padding: 0;
+}
+.alert{
+    color:red;
+}
+.fondo {
+    background-color: #35c;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    top: 0;
+    text-align: center;
+    justify-content: center;
+    justify-items: center;
+    height: auto;
+}
+.form-container{
+    background-color: #333;
+    padding: 30px;
+    width: 100%;
+    border: 1px solid black;
+    margin-top:0 auto;
+}
+
+.container-person{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    padding: 10px;
+    width: 30%;
+    height: 100%;
+    margin-top:0 auto;
+}
+
+.form{
+    display: block;
+    margin:30px auto;
+    width: 100%;
+    outline: none;
+    border:none;
+    padding: 5px;
+    font-size: 20px;
+    color:#222;
+    background-color: transparent;
+    border-bottom:1px solid #aaa;
+    color:rgb(255, 145, 0);
+}
+
+.form:focus{
+    font-size:25px;
+    border-bottom:3px solid rgb(225, 171, 100);
+    color:#999;
+}
+
+.form::placeholder{
+    color:#666;
+}
+
+#btn-submit{
+    padding: 10px;
+    border:none;
+    outline: none;
+    margin-top:50px;
+}
+
+#btn-get{
+    padding: 10px;
+    border:none;
+    outline: none;
+    margin-top:50px;
+    margin-left:10px;
+}
+
+#btn-submit:hover{
+    font-style: italic;
+    border:none;
+    outline: none;
+}
+
+#btn-submit:active{
+    font-size:15px;
+    border:none;
+    outline: none;
+}
+
+#btn-get:hover{
+    font-style: italic;
+    border:none;
+    outline: none;
+}
+
+#btn-get:active{
+    font-size:15px;
+    border:none;
+    outline: none;
+}
+h5{
+    color:#45b;
+}
+.bar{
+    background-color: #ff8000;
+    height: 30px;
+}
+.bar a{
+    padding:30px;
+}
+.modalDialog {
+	position: fixed;
+	font-family: Arial, Helvetica, sans-serif;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.8);
+	z-index: 99999;
+	opacity:0;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	pointer-events: none;
+}
+.modalDialog:target {
+	opacity:1;
+	pointer-events: auto;
+}
+.modalDialog > div {
+	width: 500px;
+	position: relative;
+	margin: 10% auto;
+	padding: 5px 20px 13px 20px;
+	border-radius: 10px;
+	background: #fff;
+	background: -moz-linear-gradient(#fff, #999);
+	background: -webkit-linear-gradient(#fff, #999);
+	background: -o-linear-gradient(#fff, #999);
+  -webkit-transition: opacity 400ms ease-in;
+-moz-transition: opacity 400ms ease-in;
+transition: opacity 400ms ease-in;
+}
+.close {
+	background: #606061;
+	color: #FFFFFF;
+	line-height: 25px;
+	position: absolute;
+	right: -12px;
+	text-align: center;
+	top: -10px;
+	width: 24px;
+	text-decoration: none;
+	font-weight: bold;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 1px 1px 3px #000;
+}
+
+#file{
+    display: block;
+}
+.preview-container{
+    position:relative;
+    top:30px;
+    width: 400px;
+    height: auto;
+    border:3px solid #934;
+    background-color: transparent;
+  }
+  .text-preview{
+    width: 394px;
+    display:block;
+    border-bottom:1px solid black;
+    background-color: #38a;
+
+  }
+
+  .img-preview{
+    text-align: center;
+    width: 394px;
+
+  }
+.close:hover { background: #00d9ff; }
+@media screen and (max-width: 915px) {
+
+    .container-person{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        justify-items: center;
+        padding: 10px;
+        width: 70%;
+        height: 120%;
+        margin-top:0 auto;
+    }
+    
+    .form{
+        display: block;
+        margin:20px auto;
+        width: 100%;
+        outline: none;
+        border:none;
+        padding: 5px;
+        font-size: 15px;
+        color:rgb(255, 145, 0);
+
+        background-color: transparent;
+        border-bottom:1px solid #aaa;
+    }    
+
+    #btn-submit{
+        padding:5px;
+        font-size: 15px;
+        margin-top:15px;
+    }
+ 
+    #btn-submit:hover{
+        font-style: italic;
+        border:none;
+        outline: none;
+    }
+    
+    #btn-submit:active{
+        padding:0px;
+        border:none;
+        outline: none;
+    }
+
+
+    #btn-get{
+        padding:5px;
+        font-size: 15px;
+        margin-top:30px;
+    }
+ 
+    #btn-get:hover{
+        font-style: italic;
+        border:none;
+        outline: none;
+    }
+    
+    #btn-get:active{
+        padding:0px;
+        border:none;
+        outline: none;
+    }
+    .form:focus{
+        font-size:17px;
+    }
+
+}

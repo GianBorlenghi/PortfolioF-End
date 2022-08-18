@@ -1,0 +1,35 @@
+<div class="fondo">
+    <div class="logout-container">
+        <app-logout></app-logout>
+    </div>
+    
+    <div class="header-container">
+    <app-header></app-header>
+</div>
+<div class="about_me-container">
+    <app-about-me *ngIf="idNull !== null"></app-about-me>
+</div>
+
+<div class="education-container">
+    <app-education *ngIf="idNull !== null"></app-education>
+</div>
+
+<div class="tech-container">
+    <app-technologies *ngIf="idNull !== null"></app-technologies>
+</div>
+
+<div class="experience-container">
+    <app-experience *ngIf="idNull !== null"></app-experience>
+</div>
+
+<div class="project-container">
+    <app-project *ngIf="idNull !== null"></app-project>
+</div>
+<div class="footer-container">
+    <app-footer></app-footer>
+</div>
+</div>
+
+
+
+

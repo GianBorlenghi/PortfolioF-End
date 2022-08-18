@@ -1,0 +1,59 @@
+<div class="bar"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <a href="/home"><i style="color: #000; font-size: 30px;" class="fa fa-solid fa-house"></i></a>
+    </div>
+<div class="fondo">
+
+    <div class="container-person">
+
+        <div class="form-container">
+            <h5>Edit personal info ID :<b>{{person.idPer}}</b></h5>
+            <form action="" [formGroup]="personForm" (ngSubmit)="submit()">
+
+                <input type="text" formControlName="name" name="name" id="name" class="form input-name"
+                    autocomplete="off" placeholder="{{person.name}}">
+                <div class="alert" *ngIf="personForm.get('name')?.errors?.['required']">*Name is required</div>
+
+                <input type="text" formControlName="surname" name="surname" id="surname" class="form input-surname"
+                    placeholder="{{person.surname}}" autocomplete="off">
+                <div class="alert" *ngIf="personForm.get('surname')?.errors?.['required']">*Surname is required</div>
+
+                <input type="text" formControlName="country" name="country" id="country" class="form input-country"
+                    placeholder="{{person.country}}" autocomplete="off">
+                <div class="alert" *ngIf="personForm.get('country')?.errors?.['required']">*Country is required</div>
+
+                <input type="text" formControlName="birth" name="birth" id="birth" class="form input-birth"
+                    placeholder="{{person.dateOfBirth}}" autocomplete="off" onfocus="(this.type='date')" onblur="(this.type='text')" (change) = "validateBirth($event)">
+                <div class="alert" *ngIf="personForm.get('birth')?.errors?.['required']">*Birth is required</div>
+
+                <input type="text" formControlName="city" name="city" id="city" class="form input-city"
+                    placeholder="{{person.city}}" autocomplete="off">
+                <div class="alert" *ngIf="personForm.get('city')?.errors?.['required']">*City is required</div>
+
+                <textarea name="description" formControlName="description" id="" cols="30" rows="5"
+                    class="form form-description" placeholder="{{person.description}}"
+                                        autocomplete="off"></textarea>
+                <div class="alert" *ngIf="personForm.get('description')?.errors?.['required']">*Description is required
+                </div>
+
+                <input type="file" formControlName="img" name="" id="file" (change)="fileEvent($event)" >
+
+                <image-cropper [imageChangedEvent]="imgChangeEvt" [maintainAspectRatio]="false"
+                    [aspectRatio]="4 / 3" [resizeToWidth]="700" format="png" (imageCropped)="imageCropped($event)"
+                    (imageLoaded)="imageLoaded($event)" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
+                </image-cropper>
+                
+                <div class="col-md-4 preview-container">
+                    <h4 class="text-preview">Image Preview</h4>
+                    <img [src]="croppedImage" class="img-preview"/>
+                  </div>
+
+                <input [disabled]="personForm.invalid" type="submit" value="Save" class="btn btn-primary"
+                    id="btn-submit">
+
+            </form>
+
+
+        </div>
+
+    </div>

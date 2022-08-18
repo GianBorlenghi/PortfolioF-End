@@ -1,0 +1,16 @@
+*{
+    box-sizing: border-box;
+    font-family: sans-serif;
+    padding:0;
+}
+
+.fondo{
+    background-image: linear-gradient(180deg, rgb(66, 119, 171),#b47a64,rgb(103, 129, 155));
+    padding: 0;
+    margin: 0;
+    float:inline-start;
+    top:0;
+    height: auto;
+ 
+}
+

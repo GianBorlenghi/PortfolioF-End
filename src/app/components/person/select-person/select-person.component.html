@@ -1,0 +1,21 @@
+
+<div class="fondo">
+
+ 
+    <div class="container">
+        <form action="" [formGroup]="selectForm" (ngSubmit)="submit()">
+        <p class="presentation">Select the person who show in the portfolio</p>
+        <select name="" id="" formControlName="per">
+            <option *ngFor="let item of person" [ngValue]="item.idPer">{{item.name}}</option>
+        </select>
+        <div class="alert" *ngIf="selectForm.get('per')?.errors?.['required']">*Person is a required field</div>
+       <a href="/home"> <input style="margin-right:10px;" type="button" value="Home" id="btn-submit"></a>
+
+        <input type="submit" value="OK" id="btn-submit">
+
+    </form>
+    </div>
+
+
+
+</div>

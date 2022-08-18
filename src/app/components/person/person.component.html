@@ -1,0 +1,88 @@
+<div class="bar"><a href="/home">Home</a></div>
+<div class="fondo">
+
+    <div class="container-person">
+
+        <div class="form-container">
+            <h5>Personal info</h5>
+            <form action="" [formGroup]="personForm" (ngSubmit)="submit()">
+
+                <input type="text" formControlName="name" name="name" id="name" class="form input-name"
+                    placeholder="Name" autocomplete="off">
+                <div class="alert" *ngIf="personForm.get('name')?.errors?.['required']">*Name is required</div>
+
+                <input type="text" formControlName="surname" name="surname" id="surname" class="form input-surname"
+                    placeholder="Surname" autocomplete="off">
+                <div class="alert" *ngIf="personForm.get('surname')?.errors?.['required']">*Surname is required</div>
+
+                <input type="text" formControlName="country" name="country" id="country" class="form input-country"
+                    placeholder="Country" autocomplete="off">
+                <div class="alert" *ngIf="personForm.get('country')?.errors?.['required']">*Country is required</div>
+
+                <input type="text" formControlName="birth" name="birth" id="birth" class="form input-birth"
+                    placeholder="Birth" autocomplete="off" onfocus="(this.type='date')" onblur="(this.type='text')"  (change) = "validateBirth($event)">
+                <div class="alert" *ngIf="personForm.get('birth')?.errors?.['required']">*Birth is required</div>
+
+                <input type="text" formControlName="city" name="city" id="city" class="form input-city"
+                    placeholder="City" autocomplete="off">
+                <div class="alert" *ngIf="personForm.get('city')?.errors?.['required']">*City is required</div>
+
+                <textarea name="description" formControlName="description" id="" cols="30" rows="5"
+                    class="form form-description" placeholder="Short description about you"
+                    autocomplete="off"></textarea>
+                <div class="alert" *ngIf="personForm.get('description')?.errors?.['required']">*Description is required
+                </div>
+
+                <input type="file" formControlName="img" name="" id="file" (change)="fileEvent($event)" >
+
+                <image-cropper [imageChangedEvent]="imgChangeEvt" [maintainAspectRatio]="false"
+                    [aspectRatio]="4 / 3" [resizeToWidth]="700" format="png" (imageCropped)="imageCropped($event)"
+                    (imageLoaded)="imageLoaded($event)" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
+                </image-cropper>
+                
+                <div class="col-md-4 preview-container">
+                    <h4 class="text-preview">Image Preview</h4>
+                    <img [src]="croppedImage" class="img-preview"/>
+                  </div>
+
+                <input [disabled]="personForm.invalid" type="submit" value="Add Person" class="btn btn-primary"
+                    id="btn-submit">
+                <a href="/admin/person/addPerson/#open" class="btn btn-danger" id="btn-get">Get all persons</a>
+
+            </form>
+
+
+        </div>
+
+    </div>
+
+</div>
+<div id="open" class="modalDialog">
+    <div>
+        <a href="/admin/person/addPerson/#close" title="Close" class="close">X</a>
+        <h2>All register persons</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Surname</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of person">
+                    <th scope="row">{{item.idPer}}</th>
+                    <td>{{item.name}}</td>
+                    <td>{{item.surname}}</td>
+                    <td>
+                        <a href="/admin/person/addPerson/#open"><button class="btn btn-danger"
+                                (click)="deletePerson(item.idPer)">Delete</button></a>
+                    </td>
+                </tr>
+
+
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
+<div class="fondo">
+    <div class="presentation">
+        <a href="/home">Home</a>
+        <p>Hello dear, in this section you will be register in my website.</p>
+    </div>
+    <div class="form-container">
+        <form action="" [formGroup]="registerForm" (ngSubmit)="submit()">
+
+            <label for="mail">Username</label>
+            <a href="javascript:void(0)" id="link" style="position:absolute;margin-left:310px;color:#35a;" (click) = "userAvailable()"><i id="icon" class="fa fa-solid"></i></a>
+            <input formControlName="mail" type="text" name="mail" id="mail" autocomplete="off" (change)="getUser($event)" (keypress)="setFalseAvailable()">
+            <h6 id="userNotAvailable" *ngIf="getAvailable() === 2" style="color:#FFF;margin-top:5px;">Username not available.</h6>
+            <h6 id="userAvailable" *ngIf="getAvailable() === 1" class="alert" style="color:#2a3;">Username is available</h6>
+            <div class="alert" *ngIf="registerForm.get('mail')?.errors?.['required']">*Mail is required</div>
+            <div class="alert" *ngIf="registerForm.get('mail')?.errors?.['email']">*Email format invalid</div>
+
+
+            <label for="pass">Password</label>
+            <input formControlName="password" type="password" id="pass" name="pass">
+            <div class="alert" *ngIf="registerForm.get('password')?.errors?.['required']">*Password is required</div>
+            <div class="alert" *ngIf="registerForm.get('password')?.errors?.['minlength']">*Password needs at least six
+                characters</div>
+            <div class="alert" *ngIf="registerForm.get('password')?.errors?.['maxlength']">*Password is too large</div>
+
+
+
+            <label for="passRepeat">Repeat password</label>
+            <input formControlName="passwordRepeat" type="password" id="passRepeat" name="passRepeat">
+            <div class="alert"
+                *ngIf="registerForm.get('password')?.value !== registerForm.get('passwordRepeat')?.value ">*Passwords do
+                not match</div>
+
+                 <input
+                [disabled]="registerForm.invalid  || registerForm.get('password')?.value !== registerForm.get('passwordRepeat')?.value"
+                type="submit" id="btn" value="Register">
+                <span *ngIf="load"class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="position:relative;top:0px;bottom:100px;right:80px;color: #333;"></span>
+        </form>
+    </div>
+    

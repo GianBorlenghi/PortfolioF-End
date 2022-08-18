@@ -1,0 +1,41 @@
+<div class="fondo">
+
+    <div class="container">
+
+        <div class="form-container">
+
+            <form action="" [formGroup]="techForm" (ngSubmit)="submit()">
+
+                <input type="text" formControlName="nameTechnology" placeholder="Technology-Name">
+                <div class="alert" *ngIf="techForm.get('nameTechnology')?.errors?.['required']">*Name is a required field</div>
+
+                <!--<input type="text" formControlName="level" placeholder="Technology-Level">-->
+                <select name="comboBox" formControlName="level" >
+                    <option value="">Select level</option>
+                    <option value="Basic">Basic</option>
+                    <option value="Mid-Level">Mid-Level</option>
+                    <option value="Advanced">Advanced</option>
+                    <option value="Expert">Expert</option>
+
+                </select>
+                
+                <div class="alert" *ngIf="techForm.get('level')?.errors?.['required']">*Level is a required field</div>
+<!--
+                <select name="comboBox" formControlName="techPerson">
+                    <option value="">Select person</option>
+                    <option [ngValue]="item" *ngFor="let item of person">{{item.name}} {{item.surname}}</option>
+
+                </select>
+
+                <div class="alert" *ngIf="techForm.get('techPerson')?.errors?.['required']">*Person is a required field</div>
+-->
+                <input type="submit" value="Add" id="btn-add">
+
+                <input type="reset" value="Reset" id="btn-reset">
+
+            </form>
+        </div>
+
+    </div>
+
+</div>
