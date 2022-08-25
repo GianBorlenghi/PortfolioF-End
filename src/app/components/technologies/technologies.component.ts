@@ -22,7 +22,7 @@ export class TechnologiesComponent implements OnInit {
 
   ngOnInit() {
     this.service.id = localStorage.getItem('id');
-    this.getTech(this.service.id);  
+    this.getTech(this.service.id); 
    }
 
    
@@ -35,6 +35,7 @@ export class TechnologiesComponent implements OnInit {
       data.map(o=>{
         this.level.push(o.level),
         this.techName.push(o.nameTechnology)}) 
+        this.graph();
         },(err:any)=>{
           this.error = err.error.message;
         })
@@ -54,6 +55,24 @@ export class TechnologiesComponent implements OnInit {
      )
   }
 
+  public graph(){
+    for(let item of this.technology){
+    var graf = document.getElementById('grafica') as HTMLCanvasElement;
+        
+        const myPieChart = new Chart(graf,{
+            type:'doughnut',
+            data:{
+              labels:[item.nameTechnology],
+                datasets :[{
+                  label:'Pedro pepepeppepepepeppeeppepepeopopop',
+                    data:[70,30],
+                    backgroundColor:['#35a','#000']
+                }]
+            }
+                });
+                myPieChart.destroy();
+              }
+  }
   
-  
+
 }

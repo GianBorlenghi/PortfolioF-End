@@ -1,4 +1,7 @@
-<div class="bar"><a href="/home">Home</a></div>
+
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<div class="bar"><a href="/home" style="font-size:20px;"><i id="plus"class="fa fa-solid fa-home"></i></a></div>
 <div class="fondo">
 
     <div class="container-person">
@@ -10,14 +13,23 @@
                 <input type="text" formControlName="name" name="name" id="name" class="form input-name"
                     placeholder="Name" autocomplete="off">
                 <div class="alert" *ngIf="personForm.get('name')?.errors?.['required']">*Name is required</div>
+                <div class="alert" *ngIf="personForm.get('name')?.errors?.['pattern']">*Invalid chars detected</div>
+                <div class="alert" *ngIf="personForm.get('name')?.errors?.['minlength']">*Name field needs three chars minimum.</div>
+                <div class="alert" *ngIf="personForm.get('name')?.errors?.['maxlength']">*Name field have sixteen chars maximum</div>
 
                 <input type="text" formControlName="surname" name="surname" id="surname" class="form input-surname"
                     placeholder="Surname" autocomplete="off">
                 <div class="alert" *ngIf="personForm.get('surname')?.errors?.['required']">*Surname is required</div>
+                <div class="alert" *ngIf="personForm.get('surname')?.errors?.['pattern']">*Invalid chars detected</div>
+                <div class="alert" *ngIf="personForm.get('surname')?.errors?.['minlength']">*Surname field needs three chars minimum.</div>
+                <div class="alert" *ngIf="personForm.get('surname')?.errors?.['maxlength']">*Surname field have thirty chars maximum</div>
 
                 <input type="text" formControlName="country" name="country" id="country" class="form input-country"
                     placeholder="Country" autocomplete="off">
                 <div class="alert" *ngIf="personForm.get('country')?.errors?.['required']">*Country is required</div>
+                <div class="alert" *ngIf="personForm.get('country')?.errors?.['pattern']">*Invalid chars detected</div>
+                <div class="alert" *ngIf="personForm.get('country')?.errors?.['minlength']">*Country field needs three chars minimum.</div>
+                <div class="alert" *ngIf="personForm.get('country')?.errors?.['maxlength']">*Country field have twenty chars maximum</div>
 
                 <input type="text" formControlName="birth" name="birth" id="birth" class="form input-birth"
                     placeholder="Birth" autocomplete="off" onfocus="(this.type='date')" onblur="(this.type='text')"  (change) = "validateBirth($event)">
@@ -26,15 +38,22 @@
                 <input type="text" formControlName="city" name="city" id="city" class="form input-city"
                     placeholder="City" autocomplete="off">
                 <div class="alert" *ngIf="personForm.get('city')?.errors?.['required']">*City is required</div>
+                <div class="alert" *ngIf="personForm.get('city')?.errors?.['pattern']">*Invalid chars detected</div>
+                <div class="alert" *ngIf="personForm.get('city')?.errors?.['minlength']">*City field needs three chars minimum.</div>
+                <div class="alert" *ngIf="personForm.get('city')?.errors?.['maxlength']">*City field have twentyfive chars maximum</div>
 
                 <textarea name="description" formControlName="description" id="" cols="30" rows="5"
                     class="form form-description" placeholder="Short description about you"
                     autocomplete="off"></textarea>
                 <div class="alert" *ngIf="personForm.get('description')?.errors?.['required']">*Description is required
                 </div>
+                <div class="alert" *ngIf="personForm.get('description')?.errors?.['pattern']">*Invalid chars detected</div>
+                <div class="alert" *ngIf="personForm.get('description')?.errors?.['minlength']">*Description field needs thirty chars minimum.</div>
+                <div class="alert" *ngIf="personForm.get('description')?.errors?.['maxlength']">*Description field have five hundred chars maximum</div>
 
                 <input type="file" formControlName="img" name="" id="file" (change)="fileEvent($event)" >
-
+                <div class="alert" *ngIf="personForm.get('img')?.errors?.['required']">*Image is required
+                </div>
                 <image-cropper [imageChangedEvent]="imgChangeEvt" [maintainAspectRatio]="false"
                     [aspectRatio]="4 / 3" [resizeToWidth]="700" format="png" (imageCropped)="imageCropped($event)"
                     (imageLoaded)="imageLoaded($event)" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">

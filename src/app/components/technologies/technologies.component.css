@@ -35,13 +35,14 @@
 }
 
 .tech-container{
+	width: 32%;
+	display:inline-block;
     margin-top:20px;
     margin-right: 10px;
     padding:30px;   
-    display: inline-block;
-    box-sizing: content-box;
+    box-sizing: border-box;
     border-radius: 5px;
-    background-color: #aaa;
+    background-color: #ccc;
     border:none;
 }
 
@@ -159,7 +160,7 @@ transition: opacity 400ms ease-in;
 		 text-align: center;
 		 justify-content: center;
 		 align-items: center;
-         width: auto;
+         width: 50%;
 	}
 
     .tech-container h4,h5{
@@ -177,5 +178,10 @@ transition: opacity 400ms ease-in;
         position:relative;
         color:#c00;
     }
+	.plus{
+		margin-left:210px;
+		font-size: 20px;
+	}
+    
     
 }

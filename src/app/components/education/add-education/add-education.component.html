@@ -1,6 +1,9 @@
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <div class="fondo">
 
     <div class="container">
+        <a href="/home"><i style="color: #000; font-size: 30px;" class="fa fa-solid fa-house" id="icon"></i></a>
 
         <div class="form-container">
 
@@ -8,23 +11,30 @@
 
                 <input type="text" formControlName="nombre" placeholder="Education-Name">
                 <div class="alert" *ngIf="form.get('nombre')?.errors?.['required']">*Name is a required field</div>
-                <div class="alert" *ngIf="form.get('nombre')?.errors?.['minlength']">Name field needs at least six characters</div>
+                <div class="alert" *ngIf="form.get('nombre')?.errors?.['minlength']">*Name field needs at least four characters</div>
+                <div class="alert" *ngIf="form.get('nombre')?.errors?.['maxlength']">*Name field has a maximum of 30 chars</div>
+                <div class="alert" *ngIf="form.get('nombre')?.errors?.['pattern']">*Invalid chars detected</div>
+
 
                 <input type="text" formControlName="area" placeholder="Education-Area">
 
                 <div class="alert" *ngIf="form.get('area')?.errors?.['required']">*Area is a required field</div>
-                <div class="alert" *ngIf="form.get('area')?.errors?.['minlength']">Area field needs at least six characters</div>
+                <div class="alert" *ngIf="form.get('area')?.errors?.['minlength']">Area field needs at least two characters</div>
+                <div class="alert" *ngIf="form.get('area')?.errors?.['maxlength']">*Area field has a maximum of 15 chars</div>
+                <div class="alert" *ngIf="form.get('area')?.errors?.['pattern']">*Invalid chars detected</div>
                 
                 <input type="text" id="date" formControlName="graduacion" placeholder="Education-Date of Graduation" onfocus="(this.type='date')" onblur="(this.type='text')">
                 <div class="alert" *ngIf="form.get('graduacion')?.errors?.['required']">*Graduation is a required field</div>
-
-
+                <div class="alert" *ngIf="form.get('graduacion')?.errors?.['pattern']">*Invalid chars detected</div>
 
                 <input type="text" formControlName="institucion" placeholder="Education-Institution">
                 <div class="alert" *ngIf="form.get('institucion')?.errors?.['required']">*Institution is a required field</div>
-                <div class="alert" *ngIf="form.get('institucion')?.errors?.['minlength']">Institution field needs at least six characters</div>
+                <div class="alert" *ngIf="form.get('institucion')?.errors?.['minlength']">Institution field needs at least four characters</div>
+                <div class="alert" *ngIf="form.get('institucion')?.errors?.['maxlength']">*Institution field has a maximum of 20 chars</div>
+                <div class="alert" *ngIf="form.get('institucion')?.errors?.['pattern']">*Invalid chars detected</div>
 
                 <input type="number" formControlName="hours" placeholder="Hours(If a course)">
+                <div class="alert" *ngIf="form.get('hours')?.errors?.['pattern']">*Invalid chars detected</div>
 
                 <input type="submit" value="Add" id="btn-add">
 

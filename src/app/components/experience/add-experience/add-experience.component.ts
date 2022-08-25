@@ -38,12 +38,11 @@ export class AddExperienceComponent implements OnInit {
   constructor(private imgServ:ImageService,private route:Router,private authService:AuthService,private aboutMeServ:AboutMeService,private formBuilder:FormBuilder, private workService:WorkService) { 
 
     this.workForm = this.formBuilder.group({
-      position: ['', [Validators.required,Validators.minLength(6)]],
+      position: ['', [Validators.required,Validators.minLength(4),Validators.maxLength(30),Validators.pattern('^[a-zA-Z ]*$')]],
       untilDate:[({value: '',disabled:true}),[Validators.required,Validators.minLength(10),Validators.maxLength(10)]],
       fromDate:['',[Validators.required,Validators.minLength(10),Validators.maxLength(10)]],
-      company:['',[Validators.required,Validators.minLength(6)]],
-//person:['',[Validators.required,Validators.minLength(6)]],
-      description:['',[Validators.required,Validators.minLength(30)]],
+      company:['',[Validators.required,Validators.minLength(2),Validators.maxLength(30),Validators.pattern('^[a-zA-Z 0-9]*$')]],
+      description:['',[Validators.required,Validators.minLength(30),Validators.maxLength(300),Validators.pattern('^[a-zA-Z 0-9,.]*$')]],
       img:['']
     });
 

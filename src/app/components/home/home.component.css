@@ -10,7 +10,12 @@
     margin: 0;
     float:inline-start;
     top:0;
-    height: auto;
- 
+    height: auto; 
 }
 
+@media screen and (max-width: 915px) {
+    .fondo{
+        width: auto;
+    }
+
+}

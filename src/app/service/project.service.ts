@@ -55,4 +55,12 @@ public addProjectWithouthImage(project:Project):any{
 public getProjectById(id:number):Observable<Project>{
 return this.httpClient.get<Project>(this.url + 'project/getProject/'+id);
 }
+
+public deleteProject(id:number):any{
+  let header = new HttpHeaders().set(
+    'authorization', 'Bearer '+sessionStorage.getItem('accessToken')
+  )
+  return this.httpClient.delete(this.url + 'project/deleteProject/'+id,{headers:header,responseType:'text'});
+}
+
 }

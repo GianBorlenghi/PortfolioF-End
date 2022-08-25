@@ -8,7 +8,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ExperienceComponent } from './components/experience/experience.component';
 import { EducationComponent } from './components/education/education.component';
 import { ProjectComponent } from './components/project/project.component';
-import { SkillsComponent } from './components/skills/skills.component';
 import { AboutMeComponent } from './components/about-me/about-me.component';
 import { TechnologiesComponent } from './components/technologies/technologies.component';
 import { LoginComponent } from './components/header/login/login.component';
@@ -30,6 +29,7 @@ import { NgChartsModule } from 'ng2-charts';
 import { AddProjectComponent } from './components/project/add-project/add-project.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +38,6 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     ExperienceComponent,
     EducationComponent,
     ProjectComponent,
-    SkillsComponent,
     AboutMeComponent,
     TechnologiesComponent,
     LoginComponent,
@@ -55,7 +54,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     EditExperienceComponent,
     EditEducationComponent,
     AddProjectComponent,
-    NotFoundComponent
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

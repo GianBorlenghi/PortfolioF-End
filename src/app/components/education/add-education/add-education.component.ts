@@ -26,11 +26,11 @@ export class AddEducationComponent implements OnInit {
   constructor(private aboutMe:AboutMeService,private formBuilder:FormBuilder,private router:Router,private serviceEduc:EducationService, private personServ:PersonServiceService,private authService:AuthService) { 
 
     this.form = this.formBuilder.group({
-      nombre:['',[Validators.required,Validators.minLength(4)]],
-      area:['',[Validators.required,Validators.minLength(4)]],
-      graduacion:['',[Validators.required]],
-      institucion:['',[Validators.required,Validators.minLength(4)]],
-      hours:['']
+      nombre:['',[Validators.required,Validators.minLength(4),Validators.maxLength(30),Validators.pattern('^[a-zA-Z ]*$')]],
+      area:['',[Validators.required,Validators.minLength(2),Validators.maxLength(15),Validators.pattern('^[a-zA-Z ]*$')]],
+      graduacion:['',[Validators.required,Validators.pattern('^[0-9/-]*$')]],
+      institucion:['',[Validators.required,Validators.minLength(4),Validators.maxLength(20),Validators.pattern('^[a-zA-Z 0-9]*$')]],
+      hours:['',Validators.pattern('^[0-9]*$')]
     });
   }
 

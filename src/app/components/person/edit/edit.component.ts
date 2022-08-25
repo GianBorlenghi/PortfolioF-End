@@ -17,22 +17,24 @@ export class EditComponent implements OnInit {
   croppedImage: any = '';
   imgChangeEvt: any = '';
   today = new Date();
-  constructor(private form: FormBuilder, private service: PersonServiceService,private router:Router) {
+  constructor(private form: FormBuilder, private service: PersonServiceService, private router: Router) {
 
     this.personForm = this.form.group({
-      name: ['', Validators.required],
-      surname: ['', Validators.required],
-      country: ['', Validators.required],
+      name: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]*$'), Validators.minLength(3), Validators.maxLength(16)]],
+      surname: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]*$'), Validators.minLength(3), Validators.maxLength(30)]],
+      country: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]*$'), Validators.minLength(3), Validators.maxLength(20)]],
       birth: ['', [Validators.required]],
-      city: ['', Validators.required],
-      description: ['', Validators.required]
+      city: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]*$'), Validators.minLength(3), Validators.maxLength(25)]],
+      description: ['', [Validators.required, Validators.pattern('^[a-zA-Z 0-9,.:;-]*$'), Validators.minLength(30), Validators.maxLength(500)]],
+      img: [''],
+      keepImg: ['']
     }
     )
   }
 
   ngOnInit(): void {
     this.getInfo();
-    }
+  }
 
 
   public getInfo(): void {
@@ -46,13 +48,19 @@ export class EditComponent implements OnInit {
         this.personForm.controls['country'].setValue(this.person.country);
         this.personForm.controls['description'].setValue(this.person.description);
         this.personForm.controls['birth'].setValue(this.person.dateOfBirth);
+        this.personForm.controls['keepImg'].setValue(true);
+        this.personForm.controls['img'].clearValidators();
       }
     )
   }
 
   submit() {
     if (this.personForm.valid) {
-      this.editPerson(); 
+      if (this.croppedImage !== '') {
+        this.editPerson();
+      } else {
+        this.editPersonKeepImg();
+      }
     } else {
       alert('Form some have error(s)');
     }
@@ -61,12 +69,13 @@ export class EditComponent implements OnInit {
   public fileEvent(event: any) {
 
     const file = event.target.files[0];
-    if (file.type === 'image/png') {
+    if (file.type === 'image/png' || file.type === 'image/jpeg') {
       this.selectedFile = file;
       this.imgChangeEvt = event;
     } else {
-      alert('Incopatible extension, only admits ".PNG"');
+      alert('Incopatible extension, only admits ".PNG / .JPEG"');
       event.target.files[0] = null;
+      console.log(file.size)
     }
 
   }
@@ -85,61 +94,86 @@ export class EditComponent implements OnInit {
     alert('image failed');
   }
 
-  
-  editPerson(){
 
-     //transform base64 to File.
-     var byteString = atob(this.croppedImage.split(',')[1]);
-     var ab = new ArrayBuffer(byteString.length);
-     var ia = new Uint8Array(ab);
-     for (var i = 0; i < byteString.length; i++) {
-       ia[i] = byteString.charCodeAt(i);
-     }
+  editPerson() {
 
-     const a = new Blob([ia]);
-     const file = new File([a], this.selectedFile.name);
+    //transform base64 to File.
+    var byteString = atob(this.croppedImage.split(',')[1]);
+    var ab = new ArrayBuffer(byteString.length);
+    var ia = new Uint8Array(ab);
+    for (var i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+    }
 
-    const person:Person = {
-  
-      name : this.personForm.get('name')?.value,
-      surname : this.personForm.get('surname')?.value,
-      country : this.personForm.get('country')?.value,
-      city : this.personForm.get('city')?.value,
+    const a = new Blob([ia]);
+    const file = new File([a], this.selectedFile.name);
+
+    const person: Person = {
+
+      name: this.personForm.get('name')?.value,
+      surname: this.personForm.get('surname')?.value,
+      country: this.personForm.get('country')?.value,
+      city: this.personForm.get('city')?.value,
       dateOfBirth: this.personForm.get('birth')?.value,
       description: this.personForm.get('description')?.value
     }
 
-    this.service.editPerson(localStorage.getItem('id'),person,file).subscribe(
+    this.service.editPerson(localStorage.getItem('id'), person, file).subscribe(
 
-      (data:any)=>{console.log(data);
+      (data: any) => {
+        console.log(data);
         this.router.navigate(['/home'])
-        }
-      
+      }
+
     )
   }
 
-  validateBirth(event:any){
+  editPersonKeepImg() {
+    const person: Person = {
+      name: this.personForm.get('name')?.value,
+      surname: this.personForm.get('surname')?.value,
+      country: this.personForm.get('country')?.value,
+      city: this.personForm.get('city')?.value,
+      dateOfBirth: this.personForm.get('birth')?.value,
+      description: this.personForm.get('description')?.value
+    }
+    console.log(person);
+    this.service.editPeronKeepImg(localStorage.getItem('id'), person).subscribe(
+      (data: any) => console.log('edited'),
+      setTimeout(()=>this.router.navigate(['/home']),1000)   
+    )
+  }
+
+  validateBirth(event: any) {
     let dateOfBirthInput = new Date(event.target.value);
     let age = this.getAge(dateOfBirthInput);
 
-    if(dateOfBirthInput > this.today){
+    if (dateOfBirthInput > this.today) {
       alert("ERROR! the date of birth entered is after the current date")
       event.target.value = '';
-      
-    }else if(age < 15 ){
+
+    } else if (age < 15) {
       alert('Only people over 15 years old can register on the web');
       event.target.value = '';
 
     }
-}
-getAge(dateOfBirth:any){
-  let years = this.today.getFullYear() - dateOfBirth.getFullYear();
-  let months = this.today.getMonth() - dateOfBirth.getMonth();
+  }
+  getAge(dateOfBirth: any) {
+    let years = this.today.getFullYear() - dateOfBirth.getFullYear();
+    let months = this.today.getMonth() - dateOfBirth.getMonth();
 
-  if (months < 0 || (months === 0 && this.today.getDate() < dateOfBirth.getDate())) {
-    years--;
-}
-  return years;
-}
+    if (months < 0 || (months === 0 && this.today.getDate() < dateOfBirth.getDate())) {
+      years--;
+    }
+    return years;
+  }
 
+  clickCheck() {
+    if (this.personForm.controls['keepImg'].value === false) {
+      this.personForm.controls['img'].setValidators(Validators.required);
+    } else {
+      this.personForm.controls['img'].clearValidators();
+
+    }
+  }
 }

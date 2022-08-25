@@ -17,12 +17,16 @@
 }
 
 .form-container{
+  
     display:flex;
     justify-content: center;
     justify-items: center;
     width: 100%;
     border:1px solid black;
     margin: 100px auto;
+    margin-top:0;
+    margin-bottom:0;
+    bottom:0;
     padding: 20px;
 }
 

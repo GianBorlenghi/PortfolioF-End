@@ -23,6 +23,7 @@
     width: 100%;
     border:1px solid black;
     margin: 115px auto;
+    
     padding: 20px;
 }
 
@@ -120,6 +121,7 @@
     margin-top:25px;
     padding:10px;
     background-color: transparent;
+    text-align:start;
     outline: none;
     width: 400px;
     height: 150px;
@@ -143,6 +145,10 @@
   }
 image-cropper{
     max-width: 400px;
+}
+
+#icon{
+    text-align: left;
 }
    @media screen and (max-width: 915px) {
    image-cropper{

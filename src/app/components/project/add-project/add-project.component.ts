@@ -27,11 +27,11 @@ export class AddProjectComponent implements OnInit {
   constructor(private router: Router, private aboutMe: AboutMeService, private personService: PersonServiceService, private techServ: TechnologyService, private formBuilder: FormBuilder, private projectServ: ProjectService) {
 
     this.formAddProject = this.formBuilder.group({
-      name: ['', [Validators.required]],
+      name: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(30),Validators.pattern('^[a-zA-Z 0-9]*$')]],
       url:[''],
       gitUrl:[''],
-      description:['',Validators.required],
-      listTechXProject: this.formBuilder.array([
+      description:['',[Validators.required,Validators.minLength(20),Validators.maxLength(400),Validators.pattern('^[a-zA-Z 0-9,.]*$')]],
+      listTechXProject:this.formBuilder.array([
         this.formBuilder.control('')
       ])
     })
@@ -93,9 +93,8 @@ export class AddProjectComponent implements OnInit {
 
   imageCropped(event: ImageCroppedEvent) {
     this.croppedImage = event.base64;
-    console.log(this.croppedImage);
-
-  }
+     }
+  
   imageLoaded(event: any) {
   }
   cropperReady() {

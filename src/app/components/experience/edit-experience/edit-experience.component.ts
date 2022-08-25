@@ -26,11 +26,11 @@ export class EditExperienceComponent implements OnInit {
   isDateValid:boolean=false;
   constructor(private aboutMeService:AboutMeService ,private router:Router,private activatedRoute: ActivatedRoute, private formBuilder: FormBuilder, private workServ: WorkService,private personServ:PersonServiceService) {
     this.formEditExperience = this.formBuilder.group({
-      position: ['', [Validators.required, Validators.minLength(6)]],
-      untilDate: [({ value: ''}), [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
-      fromDate: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
-      company: ['', [Validators.required, Validators.minLength(6)]],
-      description: ['', [Validators.required, Validators.minLength(30)]]
+      position: ['', [Validators.required,Validators.minLength(4),Validators.maxLength(30),Validators.pattern('^[a-zA-Z ]*$')]],
+      untilDate:[({value: '',disabled:true}),[Validators.required,Validators.minLength(10),Validators.maxLength(10)]],
+      fromDate:['',[Validators.required,Validators.minLength(10),Validators.maxLength(10)]],
+      company:['',[Validators.required,Validators.minLength(2),Validators.maxLength(30),Validators.pattern('^[a-zA-Z 0-9]*$')]],
+      description:['',[Validators.required,Validators.minLength(30),Validators.maxLength(300),Validators.pattern('^[a-zA-Z 0-9,.]*$')]]
     })
 
   }
@@ -63,7 +63,7 @@ export class EditExperienceComponent implements OnInit {
     )
   }
   getWorkInfo() {
-    //seguir aca, hacer el servicio en spring
+
     this.workServ.getWorkInfo(this.id).subscribe(
       (data: any) => {
         this.work = data;

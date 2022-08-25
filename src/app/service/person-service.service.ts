@@ -22,7 +22,7 @@ public addPerson(file:File,person:Person):any{
   )
   const formData: FormData = new FormData();
   formData.append('file', file,file.name);
-formData.append('name',person.name)
+  formData.append('name',person.name)
   formData.append('surname',person.surname)
   formData.append('dateOfBirth',person.dateOfBirth.toString())
   formData.append('city',person.city)
@@ -60,5 +60,24 @@ public editPerson(id:any,per:Person,file:File):any{
     formData.append('country',per.country);
 
   return this.http.post(this.url + '/admin/edit/'+id,formData,{headers:header})
+}
+
+public editPeronKeepImg(id:any,per:Person):any{
+
+  let header = new HttpHeaders().set(
+    'authorization','Bearer ' + sessionStorage.getItem('accessToken')
+  )
+
+  const formData = new FormData();
+    
+  formData.append('idPer',id.toString());
+  formData.append('name',per.name);
+  formData.append('surname',per.surname);
+  formData.append('dateOfBirth',per.dateOfBirth.toString());
+  formData.append('description', per.description);
+  formData.append('city',per.city);
+  formData.append('country',per.country);
+
+  return this.http.post(this.url + '/admin/editKeepImg/'+id,formData,{headers:header});
 }
 }

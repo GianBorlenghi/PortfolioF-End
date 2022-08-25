@@ -118,6 +118,9 @@
    .alert{
     color:#b31;
 }
+form{
+    margin-top:30px;
+}
 
    @media screen and (max-width: 915px) {
    

@@ -1,8 +1,11 @@
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <div class="fondo">
 
     <div class="container">
-
+        <a href="/home"><i style="color: #000; font-size: 30px;" class="fa fa-solid fa-house" id="icon"></i></a>
         <div class="form-container">
+            <h5 style="position:absolute;text-align: center;">Edit Experience (<ins class="alert">name</ins>: "{{education.name}}")</h5>
 
             <form action="" [formGroup]="editEducationForm" (ngSubmit)="submit()">
 

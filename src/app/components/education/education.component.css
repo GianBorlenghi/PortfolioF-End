@@ -186,4 +186,8 @@ transition: opacity 400ms ease-in;
 	.container-education a{
 		font-size:15px;
 	}
+	.plus{
+		margin-left:220px;
+		font-size: 20px;
+	}
 }

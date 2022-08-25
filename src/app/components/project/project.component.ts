@@ -49,4 +49,9 @@ export class ProjectComponent implements OnInit {
     )
   }
 
+  public deleteProject(id:any){
+    this.service.deleteProject(id).subscribe(
+      (data:any)=>console.log(data)
+    )
+  }
 }

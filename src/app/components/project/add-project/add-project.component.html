@@ -12,6 +12,10 @@
                 <div class="alert" *ngIf="formAddProject.get('name')?.errors?.['required']">
                     * Project name is a required field
                 </div>                  
+                <div class="alert" *ngIf="formAddProject.get('name')?.errors?.['minlength']">*Name field needs at least three characters</div>
+                <div class="alert" *ngIf="formAddProject.get('name')?.errors?.['maxlength']">*Name field has a maximum of 30 chars</div>
+                <div class="alert" *ngIf="formAddProject.get('name')?.errors?.['pattern']">*Invalid chars detected</div>
+
                 <input type="text" formControlName="url" placeholder="URL">           
 
                 <input type="text" formControlName="gitUrl" placeholder="Url-GitHub">           
@@ -20,6 +24,9 @@
                 <div class="alert" *ngIf="formAddProject.get('description')?.errors?.['required']">
                     * Description is a required field
                 </div>    
+                <div class="alert" *ngIf="formAddProject.get('description')?.errors?.['minlength']">*Description field needs at least twenty characters</div>
+                <div class="alert" *ngIf="formAddProject.get('description')?.errors?.['maxlength']">*Description field has a maximum of 400 chars</div>
+                <div class="alert" *ngIf="formAddProject.get('description')?.errors?.['pattern']">*Invalid chars detected</div>
 
                  <h5>Technologies</h5>
                  <div formArrayName="listTechXProject">

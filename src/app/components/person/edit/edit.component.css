@@ -102,13 +102,14 @@ h5{
 .preview-container{
     position:relative;
     top:30px;
-    width: 400px;
+    right:15px;
+    width: 360px;
     height: auto;
     border:3px solid #934;
     background-color: transparent;
   }
   .text-preview{
-    width: 394px;
+    width: 352px;
     display:block;
     border-bottom:1px solid black;
     background-color: #38a;
@@ -116,8 +117,8 @@ h5{
   }
 
   .img-preview{
-    text-align: center;
-    width: 394px;
+    text-align: start;
+    width: 352px;
 
   }
 @media screen and (max-width: 915px) {

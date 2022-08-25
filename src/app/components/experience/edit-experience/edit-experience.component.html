@@ -1,16 +1,19 @@
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <div class="fondo">
-    <a href="/home"><i style="color: #000; font-size: 30px;" class="fa fa-solid fa-house"></i></a>
         <div class="container">
-            
+            <a href="/home"><i style="color: #000; font-size: 30px;" class="fa fa-solid fa-house" id="icon"></i></a>
+
             <div class="form-container">
                 <form action="" enctype="multipart/form-data" [formGroup]="formEditExperience" (ngSubmit)="submit()">
-                    <h3>Add Work experience</h3>
+                    <h3>Edit Experience <i>({{work.workName}})</i></h3>
     
                     <input type="text" formControlName="position" placeholder="Position">
                     <div class="alert" *ngIf="formEditExperience.get('position')?.errors?.['required']">*Position is a required field
                     </div>
                     <div class="alert" *ngIf="formEditExperience.get('position')?.errors?.['minlength']">*Position field needs at
-                        least six characters</div>
+                        least three characters</div>
+                    <div class="alert" *ngIf="formEditExperience.get('position')?.errors?.['maxlength']">*Position field has a maximum of 30 chars</div>
+                    <div class="alert" *ngIf="formEditExperience.get('position')?.errors?.['pattern']">*Invalid chars detected</div>
     
                         <input type="text" id="date" formControlName="fromDate" placeholder="From" onfocus="(this.type='date')"
                         onblur="(this.type='text')"  id="dateFrom" (change) = "valiDateFrom($event)">
@@ -30,16 +33,19 @@
                     <div class="alert" *ngIf="formEditExperience.get('company')?.errors?.['required']">*Company is a required field
                     </div>
                     <div class="alert" *ngIf="formEditExperience.get('company')?.errors?.['minlength']">*Company field needs at least
-                        six characters</div>
+                        3 chars</div>
+                        <div class="alert" *ngIf="formEditExperience.get('company')?.errors?.['maxlength']">*Company field has a maximum of 30 chars</div>
+                        <div class="alert" *ngIf="formEditExperience.get('company')?.errors?.['pattern']">*Invalid chars detected</div>
     
     
                     <textarea id="description" formControlName="description" placeholder="Work description"></textarea>
-                    <div class="alert" *ngIf="">*Description is a required
+                    <div class="alert" *ngIf="formEditExperience.get('description')?.errors?.['required']">*Description is a required
                         field</div>
-                        <div class="alert" *ngIf="formEditExperience.get('description')?.errors?.['required']">*Description is a required
-                            field</div>
-                        <div class="alert" *ngIf="formEditExperience.get('description')?.errors?.['minlength']">*Description field needs
-                            at least thirty characters</div>
+                    <div class="alert" *ngIf="formEditExperience.get('description')?.errors?.['minlength']">*Description field needs
+                        at least thirty characters</div>
+                        <div class="alert" *ngIf="formEditExperience.get('description')?.errors?.['maxlength']">*Position field has a maximum of 300 chars</div>
+                        <div class="alert" *ngIf="formEditExperience.get('description')?.errors?.['pattern']">*Invalid chars detected</div>
+    
                   
                     <input type="submit" value="Save" id="btn-add">
     

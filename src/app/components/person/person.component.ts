@@ -19,12 +19,12 @@ export class PersonComponent implements OnInit {
   today = new Date();
   constructor(private form: FormBuilder, private service: PersonServiceService, private route: Router) {
     this.personForm = this.form.group({
-      name: ['', Validators.required],
-      surname: ['', Validators.required],
-      country: ['', Validators.required],
+      name: ['', [Validators.required,Validators.pattern('^[a-zA-Z ]*$'),Validators.minLength(3),Validators.maxLength(16)]],
+      surname: ['', [Validators.required,Validators.pattern('^[a-zA-Z ]*$'),Validators.minLength(3),Validators.maxLength(30)]],
+      country: ['', [Validators.required,Validators.pattern('^[a-zA-Z ]*$'),Validators.minLength(3),Validators.maxLength(20)]],
       birth: ['', [Validators.required]],
-      city: ['', Validators.required],
-      description: ['', Validators.required],
+      city: ['', [Validators.required,Validators.pattern('^[a-zA-Z ]*$'),Validators.minLength(3),Validators.maxLength(25)]],
+      description: ['', [Validators.required,Validators.pattern('^[a-zA-Z 0-9,.:;-]*$'),Validators.minLength(30),Validators.maxLength(500)]],
       img : ['', Validators.required]
     }
     )

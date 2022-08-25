@@ -4,13 +4,13 @@
                     class="fa fa-solid fa-circle-plus"></i></a></h2>
 
     </div>
-    <h3 *ngIf="error !== null" id="error" class="elegantshadow"> <img style="width:30px" src="./assets/img/pixlr-bg-result.png" alt=""> {{error}}</h3>
+    <h3 *ngIf="error !== null" id="error" class="elegantshadow"> <img style="width:30px"
+            src="./assets/img/pixlr-bg-result.png" alt=""> {{error}}</h3>
     <div class="container-experience">
-        
+
         <div class="container-experience-info">
             <div class="experience" *ngFor="let item of project;let i = index">
-                <a href="/home"><i class="fa fa-solid fa-trash" id="delete"></i></a>
-                <a href=""><i class="fa fa-solid fa-pen" id="edit" (click)="idEditProject(item.idproject)"></i></a>
+                <a href="/home"><i class="fa fa-solid fa-trash" id="delete" (click)="deleteProject(item.idproject)"></i></a>
                 <h5 style="color:#c79324;font-weight: normal;opacity: 20%;text-shadow: 1px 1px 1px #000000;">Project
                     {{i+1}}</h5>
                 <h5 *ngIf="item.img !==null"><b><a (click)="viewPhoto(i)" href="/#open"><i style="color:#c79324"

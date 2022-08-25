@@ -230,6 +230,8 @@ transition: opacity 400ms ease-in;
 		1px -1px 0 #767676, 
 		-28px 56px 1px #e4e3e2;
 	}
+
+
 @media screen and (max-width: 915px) {
     .container-experience {
         display:inline-block;
@@ -305,5 +307,8 @@ transition: opacity 400ms ease-in;
        width: 150px;
        height:150px;
     }
-    
+    .plus{
+		margin-left:223px;
+		font-size: 20px;
+	}
 }
